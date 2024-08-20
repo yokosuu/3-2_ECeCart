@@ -46,7 +46,7 @@ for i, product in enumerate(products):
             st.success(f"{product['name']} をカートに追加しました")
 
 # カートに進むボタン
-if st.button("カートを見る"):
+if st.button("カートを見る",type=primary):
     st.write("カートの中身：")
     for i, item in enumerate(st.session_state['cart']):
         st.write(f"{item['product']['name']} - {item['product']['description']} - 数量: {item['quantity']}")
@@ -59,7 +59,7 @@ if st.button("カートを見る"):
     notes = st.text_area("備考を入力してください")
 
     # メール送信
-    if st.button("注文を送信"):
+    if st.button("注文を送信",help="今回はメアドを抜いてあるので飛びません",type=primary):
         cart_details = "\n".join([f"{item['product']['name']} - {item['product']['description']} - 数量: {item['quantity']}" for item in st.session_state['cart']])
         message = f"注文内容:\n{cart_details}\n\nニックネーム:\n{nickname}\n\n備考:\n{notes}"
 
