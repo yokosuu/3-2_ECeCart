@@ -2,7 +2,10 @@ import streamlit as st
 import smtplib, ssl
 from email.mime.text import MIMEText
 from pathlib import Path
-import my_gmail_account as gmail  
+
+##
+gmail.account = "********@gmail.com"
+gmail.password = "*******"
 
 # 商品情報の設定
 products = [
@@ -61,8 +64,8 @@ if st.button("カートを見る"):
 
         msg = MIMEText(message)
         msg['Subject'] = "注文内容"
-        msg['From'] = gmail.account
-        msg['To'] = "recipient_email@example.com"
+        msg['From'] = "********@gmail.com
+        msg['To'] = "********@gmail.com
 
         # メール送信処理
         try:
