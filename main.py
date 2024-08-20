@@ -4,8 +4,8 @@ from email.mime.text import MIMEText
 from pathlib import Path
 
 ##
-gmail.account = "********@gmail.com"
-gmail.password = "*******"
+gmailaccount = "********@gmail.com"
+gmailpassword = "*******"
 
 # 商品情報の設定
 products = [
@@ -64,13 +64,13 @@ if st.button("カートを見る"):
 
         msg = MIMEText(message)
         msg['Subject'] = "注文内容"
-        msg['From'] = gmail.account
-        msg['To'] = gmail.account
+        msg['From'] = gmailaccount
+        msg['To'] = gmailaccount
 
         # メール送信処理
         try:
             with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=ssl.create_default_context()) as server:
-                server.login(gmail.account, gmail.password)
+                server.login(gmailaccount, gmailpassword)
                 server.send_message(msg)
                 st.success("注文が送信されました")
         except Exception as e:
