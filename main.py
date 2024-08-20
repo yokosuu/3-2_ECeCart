@@ -64,8 +64,8 @@ if st.button("カートを見る"):
 
         msg = MIMEText(message)
         msg['Subject'] = "注文内容"
-        msg['From'] = "********@gmail.com
-        msg['To'] = "********@gmail.com
+        msg['From'] = gmail.account
+        msg['To'] = gmail.account
 
         # メール送信処理
         try:
