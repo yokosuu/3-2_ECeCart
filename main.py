@@ -5,8 +5,8 @@ from email.mime.text import MIMEText
 from pathlib import Path
 
 ##
-gmailaccount = "********@gmail.com"
-gmailpassword = "*******"
+gmailaccount = "*****@gmail.com"
+gmailpassword = "******"
 
 # 商品情報の設定
 products = [
@@ -24,6 +24,12 @@ products = [
 # カート情報を保持
 if 'cart' not in st.session_state:
     st.session_state['cart'] = []
+
+if 'nickname' not in st.session_state:
+    st.session_state['nickname'] = ""
+
+if 'notes' not in st.session_state:
+    st.session_state['notes'] = ""
 
 # ページタイトル
 st.title("すずき商店")
@@ -46,34 +52,33 @@ for i, product in enumerate(products):
             st.session_state['cart'].append({"product": product, "quantity": quantity})
             st.success(f"{product['name']} をカートに追加しました")
 
-# カートに進むボタン
-if st.button("カートを見る",type="primary",use_container_width=True):
-    st.write("カートの中身：")
-    for i, item in enumerate(st.session_state['cart']):
+# カートの内容を常に表示
+st.write("カートの中身：")
+if len(st.session_state['cart']) == 0:
+    st.write("カートは空です")
+else:
+    for item in st.session_state['cart']:
         st.write(f"{item['product']['name']} - {item['product']['description']} - 数量: {item['quantity']}")
-        if st.button(f"削除 - {item['product']['name']}", key=f"remove_{i}"):
-            st.session_state['cart'].pop(i)
-            st.experimental_rerun()
 
-    # ニックネームと備考の入力
-    nickname = st.text_input("ニックネームを入力してください")
-    notes = st.text_area("備考を入力してください")
+# ニックネームと備考の入力
+st.session_state['nickname'] = st.text_input("ニックネームを入力してください", value=st.session_state['nickname'])
+st.session_state['notes'] = st.text_area("備考を入力してください", value=st.session_state['notes'])
 
-    # メール送信
-    if st.button("注文を送信",help="今回はメアドを抜いてあるので飛びません",type="primary",use_container_width=True):
-        cart_details = "\n".join([f"{item['product']['name']} - {item['product']['description']} - 数量: {item['quantity']}" for item in st.session_state['cart']])
-        message = f"注文内容:\n{cart_details}\n\nニックネーム:\n{nickname}\n\n備考:\n{notes}"
+# メール送信
+if st.button("注文を送信", help="今回はメアドを抜いてあるので飛びません", type="primary", use_container_width=True):
+    cart_details = "\n".join([f"{item['product']['name']} - {item['product']['description']} - 数量: {item['quantity']}" for item in st.session_state['cart']])
+    message = f"注文内容:\n{cart_details}\n\nニックネーム:\n{st.session_state['nickname']}\n\n備考:\n{st.session_state['notes']}"
 
-        msg = MIMEText(message)
-        msg['Subject'] = "注文内容"
-        msg['From'] = gmailaccount
-        msg['To'] = gmailaccount
+    msg = MIMEText(message)
+    msg['Subject'] = "注文内容"
+    msg['From'] = gmailaccount
+    msg['To'] = gmailaccount
 
-        # メール送信処理
-        try:
-            with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=ssl.create_default_context()) as server:
-                server.login(gmailaccount, gmailpassword)
-                server.send_message(msg)
-                st.success("注文が送信されました")
-        except Exception as e:
-            st.error(f"メール送信に失敗しました: {e}")
+    # メール送信処理
+    try:
+        with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=ssl.create_default_context()) as server:
+            server.login(gmailaccount, gmailpassword)
+            server.send_message(msg)
+            st.success("注文が送信されました")
+    except Exception as e:
+        st.error(f"メール送信に失敗しました: {e}")
