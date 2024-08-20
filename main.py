@@ -38,8 +38,9 @@ for i, product in enumerate(products):
         else:
             st.error(f"画像が見つかりません: {product['image']}")
         st.write(f"商品No: {product['id']}")
+        st.write(product['name'])
         st.write(product["description"])
-        quantity = st.selectbox(f"数量 - {product['name']}", range(1, 6), key=f"qty_{product['id']}")
+        quantity = st.selectbox(f"数量", range(1, 6), key=f"qty_{product['id']}")
         if st.button(f"カートに追加 - {product['name']}", key=product['id']):
             st.session_state['cart'].append({"product": product, "quantity": quantity})
             st.success(f"{product['name']} をカートに追加しました")
