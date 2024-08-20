@@ -9,10 +9,10 @@ gmailpassword = "*******"
 
 # 商品情報の設定
 products = [
-    {"id": 1, "name": "うぇぶぺ", "description": "今思えば優しい甘みが特徴のリキュール。", "image": "./img/item01.png"},
+    {"id": 1, "name": "うぇぶぺーじ", "description": "今思えば優しい甘みが特徴のリキュール。", "image": "./img/item01.png"},
     {"id": 2, "name": "html", "description": "スクレイピングで再び出会った複雑な味わいのリキュール", "image": "./img/item02.png"},
     {"id": 3, "name": "えーぴーあい", "description": "複雑な香りと便利な旨味が広がる焼酎", "image": "./img/item03.png"},
-    {"id": 4, "name": "すとりーむり", "description": "形になる楽しさ・軽やかな味わいの白ワイン。", "image": "./img/item04.png"},
+    {"id": 4, "name": "すとりーむりっと", "description": "形になる楽しさ・軽やかな味わいの白ワイン。", "image": "./img/item04.png"},
     {"id": 5, "name": "でーびー", "description": "意外にわかりやすさを持つリキュール", "image": "./img/item05.png"},
     {"id": 6, "name": "ぎっと", "description": "よくわからないけどいつの間にか慣れるリキュール", "image": "./img/item06.png"},
     {"id": 7, "name": "ちーびる", "description": "みんなでの議論と分担が楽しい大人の部活動リキュール。", "image": "./img/item07.png"},
