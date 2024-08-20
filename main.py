@@ -2,7 +2,7 @@ import streamlit as st
 import smtplib, ssl
 from email.mime.text import MIMEText
 from pathlib import Path
-import my_gmail_account as gmail  # This imports your Gmail account information
+import my_gmail_account as gmail  
 
 # 商品情報の設定
 products = [
@@ -22,7 +22,7 @@ if 'cart' not in st.session_state:
     st.session_state['cart'] = []
 
 # ページタイトル
-st.title("口八商店")
+st.title("すずき商店")
 
 # 商品の表示
 cols = st.columns(3)
