@@ -4,7 +4,7 @@ import streamlit.components.v1 as stc
 from email.mime.text import MIMEText
 from pathlib import Path
 
-##
+#googleのアプリパスワードを利用しています。ご自身のgmailと新しく取得したアプリパスワード（16桁）を活用してください
 gmailaccount = "*****@gmail.com"
 gmailpassword = "******"
 
