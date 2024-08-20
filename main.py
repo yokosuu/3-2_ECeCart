@@ -18,7 +18,7 @@ products = [
     {"id": 6, "name": "ぎっと", "description": "よくわからないけどいつの間にか慣れるリキュール", "image": "./img/item06.png"},
     {"id": 7, "name": "ちーびる", "description": "みんなでの議論と分担が楽しい大人の部活動リキュール。", "image": "./img/item07.png"},
     {"id": 8, "name": "step3", "description": "つらたのしい香りが漂うワイン。", "image": "./img/item08.png"},
-    {"id": 9, "name": "step4", "description": "つらたのしい味わいの吟醸酒。", "image": "./img/item09.png"},
+    {"id": 9, "name": "step4", "description": "つらたのしい味わいがおいしい吟醸酒。", "image": "./img/item09.png"},
 ]
 
 # カート情報を保持
